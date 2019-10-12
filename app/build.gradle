@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.example.streamsenderdemo"
+        minSdkVersion 26
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation 'org.interledger:ilp-core:HEAD-SNAPSHOT'
+    implementation 'org.interledger:link-core:HEAD-SNAPSHOT'
+    implementation 'org.interledger:link-ilp-over-http:HEAD-SNAPSHOT'
+    implementation 'org.interledger:codecs-framework:HEAD-SNAPSHOT'
+    implementation 'org.interledger:codecs-ilp:HEAD-SNAPSHOT'
+    implementation 'org.interledger:spsp-core:HEAD-SNAPSHOT'
+    implementation 'org.interledger:spsp-client:HEAD-SNAPSHOT'
+    implementation 'org.interledger:codecs-stream:HEAD-SNAPSHOT'
+    implementation 'org.interledger:stream-core:HEAD-SNAPSHOT'
+    implementation 'org.interledger:stream-client:HEAD-SNAPSHOT'
+    implementation 'org.slf4j:slf4j-jdk14:1.7.28'
+    implementation 'com.squareup.okhttp3:okhttp:4.2.1'
+}
